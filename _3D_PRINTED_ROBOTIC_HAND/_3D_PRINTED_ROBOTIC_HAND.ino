@@ -32,8 +32,8 @@ void loop() {
   int flexpos; 
   int servopos;
   flexpos = analogRead(FLEX_PIN); //reads analog value from arduino
-  servopos = map(flexpos, 640, 430, 0, 180);  //maps analog values given by flex sensors and maps them to 0 to 180 degrees of servo rotation
-  servopos = constrain(servopos, 0, 180);     //prevents the servo from going below 0 degrees and above 180 degrees
+  servopos = map(flexpos, 640, 430, 0, 180);  //maps analog values to 0 to 180 degrees of servo rotation
+  servopos = constrain(servopos, 0, 180);     //constrains servo rotation to be between 0 and 180 degrees
   servo.write(servopos);    //tells servo to turn however many degrees accordingly to the analog values arduino takes in
   //the line of code below is for debugging purposes so you can find the values of your flex sensors
   //Serial.println("0: " + String(flexpos));
