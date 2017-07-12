@@ -1,8 +1,3 @@
-// flex labeled 0 360 to 740, 650 not moving
-// flex labeled 1 390 to 730, 674 not moving
-// flex labeled 2 450 to 740, 672 not moving
-// flex labeled 3 470 to 760, 713 not moving
-// flex labeled 4 410 to 740, 690 not moving
 const int FLEX_PIN = A0;
 const int FLEX_PIN1 = A1;
 const int FLEX_PIN2 = A2;
@@ -10,8 +5,8 @@ const int FLEX_PIN3 = A3;
 const int FLEX_PIN4 = A4;
 
 #include <Servo.h>
-Servo servo;
-Servo servo1; // creates servo object to control a servo
+Servo servo;        // creates servo object to control a servo
+Servo servo1; 
 Servo servo2;
 Servo servo3;
 Servo servo4;
@@ -19,13 +14,13 @@ Servo servo4;
 void setup() {
   Serial.begin(9600);
 
-  servo.attach(11);
+  servo.attach(11); //attaches servo to a digital pin on the arduino
   servo1.attach(9);
   servo2.attach(6);
   servo3.attach(5);
   servo4.attach(3);
 
-  servo.write(0);
+  servo.write(0);   //sets the servo to 0
   servo1.write(0);
   servo2.write(0);
   servo3.write(0);
@@ -34,12 +29,13 @@ void setup() {
 }
 
 void loop() {
-  int flexpos;
+  int flexpos; 
   int servopos;
-  flexpos = analogRead(FLEX_PIN);
-  servopos = map(flexpos, 640, 430, 0, 180); 
-  servopos = constrain(servopos, 0, 180);
-  servo.write(servopos);
+  flexpos = analogRead(FLEX_PIN); //reads analog value from arduino
+  servopos = map(flexpos, 640, 430, 0, 180);  //maps analog values given by flex sensors and maps them to 0 to 180 degrees of servo rotation
+  servopos = constrain(servopos, 0, 180);     //prevents the servo from going below 0 degrees and above 180 degrees
+  servo.write(servopos);    //tells servo to turn however many degrees accordingly to the analog values arduino takes in
+  //the line of code below is for debugging purposes so you can find the values of your flex sensors
   //Serial.println("0: " + String(flexpos));
   
   int flexpos1;
