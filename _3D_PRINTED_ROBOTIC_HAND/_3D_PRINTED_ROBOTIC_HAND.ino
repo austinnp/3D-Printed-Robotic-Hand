@@ -64,7 +64,7 @@ void loop() {
   servopos3 = map(flexpos3, 650, 450, 0, 180); 
   servopos3 = constrain(servopos3, 0, 180);
   servo3.write(servopos3);
-  Serial.println("3: " + String(flexpos3));
+  //Serial.println("3: " + String(flexpos3));
 
   int flexpos4;
   int servopos4;
